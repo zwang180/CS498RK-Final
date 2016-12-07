@@ -85,6 +85,8 @@ vintageControllers.controller('ItemController', ['$scope', '$http', '$routeParam
         $window.sessionStorage.currentUser = angular.toJson(res.data['data']);
         $scope.user = res.data['data'];
         $scope.user_favorite = $scope.user.favorite.indexOf($scope.id);
+        $('#favorite-text').text("Added");
+        $('#favorite-button').attr("disabled", true);
       }, function(res) {
         console.log(res);
       })
@@ -107,7 +109,7 @@ vintageControllers.controller('ItemController', ['$scope', '$http', '$routeParam
 
 }]);
 
-vintageControllers.controller('ItemListController', ['$scope', '$window', '$http', '$routeParams', '$route', 'UserAuth', function($scope, $window, $http, $routeParams, $route, UserAuth) {
+vintageControllers.controller('ItemListController', ['$scope', '$window', '$http', '$routeParams', '$route', '$location', 'UserAuth', function($scope, $window, $http, $routeParams, $route, $location, UserAuth) {
   $scope.user = angular.fromJson($window.sessionStorage.currentUser);
   $scope.id = $routeParams.store_id;
   $scope.type = "";
@@ -122,7 +124,7 @@ vintageControllers.controller('ItemListController', ['$scope', '$window', '$http
   });
   $scope.delete = function(id) {
     $http.delete("http://localhost:5000/api/items/" + id).then(function(res) {
-      $('#item-' + id).remove();
+      $location.path('/item_list/' + $scope.id);
     }, function(res) {
       console.log(res);
     })

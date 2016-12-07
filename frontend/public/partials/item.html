@@ -80,7 +80,10 @@
 	         <td>Material: {{item.material}} </td>
 	       </tr>
 				 <tr>
-					 <td><button class="button secondary float-right" ng-show="user" ng-click="favorite()">Favorite</button></td>
+					 <td><button class="button secondary float-right" ng-show="user" ng-click="favorite()" id="favorite-button">
+             <span id="favorite-text">Favorite</span>
+           </button>
+         </td>
 				 </tr>
 	      </table>
 
