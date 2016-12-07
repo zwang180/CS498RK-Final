@@ -4,17 +4,17 @@ var vintageControllers = angular.module('vintageControllers', []);
 vintageControllers.controller('StoreController', ['$scope', '$routeParams', '$http', '$window', '$route', 'UserAuth', function($scope, $routeParams, $http, $window, $route, UserAuth) {
   $scope.user = angular.fromJson($window.sessionStorage.currentUser);
   $scope.id = $routeParams.store_id;
-  $http.get('http://localhost:5000/api/stores/' + $scope.id).then(function(res) {
+  $http.get('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/stores/' + $scope.id).then(function(res) {
     $scope.store = res.data['data'];
   }, function(res) {
     console.log(res);
   });
-  $http.get("http://localhost:5000/api/all?where={'belongsTo': '" + $scope.id + "'}").then(function(res) {
+  $http.get("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/all?where={'belongsTo': '" + $scope.id + "'}").then(function(res) {
     $scope.reviews = res.data['data'];
   }, function(res) {
     console.log(res);
   });
-  $http.get("http://localhost:5000/api/items?where={'belongsTo': '" + $scope.id + "'}").then(function(res) {
+  $http.get("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/items?where={'belongsTo': '" + $scope.id + "'}").then(function(res) {
     $scope.items = res.data['data'];
   }, function(res) {
     console.log(res);
@@ -25,9 +25,9 @@ vintageControllers.controller('StoreController', ['$scope', '$routeParams', '$ht
     data['content'] = $scope.comment;
     data['belongsTo'] = $scope.id;
     data['user'] = $scope.user.nickname;
-    $http.post("http://localhost:5000/api/all", data).then(function(res) {
+    $http.post("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/all", data).then(function(res) {
       $scope.comment = "";
-      $http.get("http://localhost:5000/api/all?where={'belongsTo': '" + $scope.id + "'}").then(function(res) {
+      $http.get("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/all?where={'belongsTo': '" + $scope.id + "'}").then(function(res) {
         $scope.reviews = res.data['data'];
       }, function(res) {
         console.log(res);
@@ -74,14 +74,14 @@ vintageControllers.controller('ItemController', ['$scope', '$http', '$routeParam
   $scope.user = angular.fromJson($window.sessionStorage.currentUser);
   $scope.id = $routeParams.item_id;
   $scope.user_favorite = $scope.user.favorite.indexOf($scope.id);
-  $http.get("http://localhost:5000/api/items/" + $scope.id).then(function (response) {
+  $http.get("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/items/" + $scope.id).then(function (response) {
     var allData = response.data;
     $scope.item = allData.data;
   });
   $scope.favorite = function() {
     if($scope.user_favorite == -1) {
       $scope.user.favorite.push($scope.id);
-      $http.put("http://localhost:5000/api/update/" + $scope.user._id, $scope.user).then(function(res) {
+      $http.put("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/update/" + $scope.user._id, $scope.user).then(function(res) {
         $window.sessionStorage.currentUser = angular.toJson(res.data['data']);
         $scope.user = res.data['data'];
         $scope.user_favorite = $scope.user.favorite.indexOf($scope.id);
@@ -113,17 +113,17 @@ vintageControllers.controller('ItemListController', ['$scope', '$window', '$http
   $scope.user = angular.fromJson($window.sessionStorage.currentUser);
   $scope.id = $routeParams.store_id;
   $scope.type = "";
-  $http.get("http://localhost:5000/api/stores/" + $scope.id).then(function(response) {
+  $http.get("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/stores/" + $scope.id).then(function(response) {
     $scope.store = response.data['data'];
   })
-  $http.get("http://localhost:5000/api/items?where={'belongsTo': '" + $scope.id + "'}").then(function(response) {
+  $http.get("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/items?where={'belongsTo': '" + $scope.id + "'}").then(function(response) {
     var allItems = response.data;
     $scope.items = allItems.data;
   }, function(res) {
     console.log(res);
   });
   $scope.delete = function(id) {
-    $http.delete("http://localhost:5000/api/items/" + id).then(function(res) {
+    $http.delete("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/items/" + id).then(function(res) {
       $location.path('/item_list/' + $scope.id);
     }, function(res) {
       console.log(res);
@@ -142,12 +142,12 @@ vintageControllers.controller('AccountController', ['$scope', '$http', '$window'
   $scope.user = angular.fromJson($window.sessionStorage.currentUser);
   $scope.favorite = $scope.user.favorite;
   if($scope.favorite.length) {
-    $http.get("http://localhost:5000/api/items?where={'_id': {'$in': " + JSON.stringify($scope.favorite) + "}}").then(function(res) {
+    $http.get("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/items?where={'_id': {'$in': " + JSON.stringify($scope.favorite) + "}}").then(function(res) {
       $scope.favorites = res.data['data'];
     })
   }
   if($scope.user.ownerof) {
-    $http.get("http://localhost:5000/api/stores/" + $scope.user.ownerof).then(function(res) {
+    $http.get("http://fa16-cs498rk-090.cs.illinois.edu:5000/api/stores/" + $scope.user.ownerof).then(function(res) {
       $scope.store = res.data['data'];
     }, function(res) {
       console.log(res);
@@ -165,7 +165,7 @@ vintageControllers.controller('MainController', ['$scope', '$http', '$location',
   $scope.user = angular.fromJson($window.sessionStorage.currentUser);
   $scope.name = "";
   $scope.city = "";
-  $http.get('http://localhost:5000/api/stores/?limit=5').then(function(res) {
+  $http.get('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/stores?limit=5').then(function(res) {
     $scope.stores = res.data['data'];
   })
   $scope.logout = function() {
@@ -195,7 +195,7 @@ vintageControllers.controller('RegisterController', ['$scope', '$location', '$wi
 
 vintageControllers.controller('StoreListController', ['$scope' , '$window', '$http', '$route', 'UserAuth', function($scope, $window, $http, $route, UserAuth) {
   $scope.user = angular.fromJson($window.sessionStorage.currentUser);
-  $http.get('http://localhost:5000/api/stores/?limit=5').then(function(res) {
+  $http.get('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/stores/?limit=5').then(function(res) {
     $scope.stores = res.data['data'];
   })
   $scope.orderby = "name";
@@ -230,7 +230,7 @@ vintageControllers.controller('EditInfoController', ['$scope' , '$location', '$w
     var updateUser = $scope.user;
     updateUser.nickname = $scope.nickname;
     updateUser.email = $scope.email;
-    $http.put('http://localhost:5000/api/update/' + $scope.user._id, updateUser).then(function(res) {
+    $http.put('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/update/' + $scope.user._id, updateUser).then(function(res) {
       $window.sessionStorage.currentUser = angular.toJson(res.data['data']);
       $location.path('/account');
     }, function(res) {
@@ -242,13 +242,13 @@ vintageControllers.controller('EditInfoController', ['$scope' , '$location', '$w
 vintageControllers.controller('EditStoreController', ['$scope' , '$location', '$window', '$http','$routeParams', function($scope, $location, $window, $http, $routeParams) {
   $scope.user = angular.fromJson($window.sessionStorage.currentUser);
   $scope.id = $routeParams.id;
-  $http.get('http://localhost:5000/api/stores/' + $scope.id).then(function(res) {
+  $http.get('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/stores/' + $scope.id).then(function(res) {
     $scope.store = res.data['data'];
   }, function(res) {
     console.log(res);
   })
   $scope.editStore = function() {
-    $http.put('http://localhost:5000/api/stores/' + $scope.store._id, $scope.store).then(function(res) {
+    $http.put('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/stores/' + $scope.store._id, $scope.store).then(function(res) {
       $location.path('/store/' + $scope.id);
     }, function(res) {
       console.log(res);
@@ -263,11 +263,11 @@ vintageControllers.controller('AddStoreController', ['$scope' , '$location', '$w
   $scope.store.owner = $scope.user._id;
   $scope.store.ownerName = $scope.user.username;
   $scope.addStore = function() {
-    $http.post('http://localhost:5000/api/stores/', $scope.store).then(function(res) {
+    $http.post('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/stores/', $scope.store).then(function(res) {
       var store = res.data['data'];
       var user = $scope.user;
       user.ownerof = store._id;
-      $http.put('http://localhost:5000/api/update/' + $scope.user._id, user).then(function(res) {
+      $http.put('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/update/' + $scope.user._id, user).then(function(res) {
         $window.sessionStorage.currentUser = angular.toJson(res.data['data']);
         $location.path('/store/' + store._id);
       }, function(res) {
@@ -284,7 +284,7 @@ vintageControllers.controller('AddItemController', ['$scope' , '$location', '$wi
   $scope.item = {};
   $scope.addItem = function() {
     $scope.item.belongsTo = $scope.user.ownerof;
-    $http.post('http://localhost:5000/api/items/', $scope.item).then(function(res) {
+    $http.post('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/items/', $scope.item).then(function(res) {
       var item = res.data['data'];
       $location.path('/item_list/' + $scope.user.ownerof);
     }, function(res) {
@@ -296,11 +296,11 @@ vintageControllers.controller('AddItemController', ['$scope' , '$location', '$wi
 vintageControllers.controller('EditItemController', ['$scope' , '$location', '$window', '$http','$routeParams', function($scope, $location, $window, $http, $routeParams) {
   $scope.user = angular.fromJson($window.sessionStorage.currentUser);
   $scope.id = $routeParams.id;
-  $http.get('http://localhost:5000/api/items/' + $scope.id).then(function(res) {
+  $http.get('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/items/' + $scope.id).then(function(res) {
     $scope.item = res.data['data'];
   })
   $scope.editItem = function() {
-    $http.put('http://localhost:5000/api/items/' + $scope.id, $scope.item).then(function(res) {
+    $http.put('http://fa16-cs498rk-090.cs.illinois.edu:5000/api/items/' + $scope.id, $scope.item).then(function(res) {
       var item = res.data['data'];
       $location.path('/item/' + item._id);
     }, function(res) {
