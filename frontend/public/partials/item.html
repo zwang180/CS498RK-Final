@@ -1,0 +1,94 @@
+<div class ="row" id="menu">
+  <ul class="dropdown menu float-right" dropdown-menu ng-show="user">
+    <li>
+      <a href="#">{{ user.nickname }}</a>
+      <ul class="menu">
+        <!-- <li><a href="#">Your Favorites</a></li> -->
+        <li><a href="#/account">Your Account</a></li>
+        <li><a ng-click="logout()">Log out </a></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="dropdown menu float-right" dropdown-menu ng-hide="user">
+    <li>
+      <a href="#/login" ng-hide="user">Login</a>
+    </li>
+    <li>
+      <a href="#/register" ng-hide="user">Register</a>
+    </li>
+  </ul>
+</div>
+<header class="w3-container w3-padding-32 w3-center w3-opacity w3-margin-bottom">
+  <div class="w3-clear"></div>
+  <a href="#/main"><h1><b>Vintage Explorer</b></h1></a>
+</header>
+<!-- <li ng-repeat=""> -->
+
+
+
+			<div class="row" id = "item">
+	      <div class="small-12 large-1 columns"> <p></p> </div>
+	      <div class="small-12 large-6 columns">
+	      <slick class ="float-center" settings="slickConfig">
+	        <div>
+	          <a href="#" >
+	            <img src="./media/perse1.jpg" style="width:400px;height:400px;" >
+	          </a>
+	        </div>
+	        <div>
+	          <a href="#" >
+	            <img src="./media/perse2.jpg" style="width:400px;height:400px;">
+	          </a>
+	        </div>
+	        <div>
+	          <a href="#" >
+	            <img src="./media/perse3.jpg" style="width:400px;height:400px;">
+	          </a>
+	        </div>
+	        <div>
+	          <a href="#" >
+	            <img src="./media/perse4.jpg" style="width:400px;height:400px;">
+	          </a>
+	        </div>
+	      </slick>
+	      </div>
+
+	     <div class="small-12 large-4 columns ">
+	      <div class="row show-for-large" > </div>
+	      <div class="row show-for-large"> </div>
+	      <div class="row show-for-large"> </div>
+	      <div class="row show-for-large"> </div>
+	      <div class="row show-for-large"> </div>
+	      <div class="row show-for-large"> </div>
+	      <div class="row show-for-large"> </div>
+	      <div class="row show-for-large"> </div>
+	      <table class="itemInfo float-right">
+
+	      <tr>
+	         <td>Name: {{item.name}}</td>
+	       </tr>
+	      <tr>
+	         <td>Year: {{item.year}} </td>
+	       </tr>
+				 <tr>
+						<td>Type: {{item.type}} </td>
+					</tr>
+	       <tr>
+	         <td>Size: {{item.size}} </td>
+	       </tr>
+	       <tr>
+	         <td>Material: {{item.material}} </td>
+	       </tr>
+				 <tr>
+					 <td><button class="button secondary float-right" ng-show="user" ng-click="favorite()">Favorite</button></td>
+				 </tr>
+	      </table>
+
+	     </div>
+
+	     <div class="small-12 large-1 columns"> <p></p> </div>
+
+	   </div>
+
+
+ <!-- </li> -->

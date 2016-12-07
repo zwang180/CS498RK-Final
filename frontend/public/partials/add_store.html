@@ -1,0 +1,38 @@
+<header class="w3-container w3-padding-32 w3-center w3-opacity w3-margin-bottom">
+  <div class="w3-clear"></div>
+  <a href="#/main"><h1><b>Vintage Explorer</b></h1></a>
+</header>
+<div class="row">
+  <div class="large-2 show-for-large columns"><p></p></div>
+  <div class="small-12 large-8 columns">
+<form name="store_form">
+    <div class="container">
+      <label><b>Name</b></label>
+      <input type="text" placeholder="Enter Store Name" name="name" ng-model="store.name" required>
+
+      <label><b>City</b></label>
+      <input type="text" placeholder="Enter An Address" name="city" ng-model="store.city">
+
+      <label><b>Address</b></label>
+      <input type="text" placeholder="Enter An Address" name="address" ng-model="store.contact.address">
+
+      <label><b>Hour</b></label>
+      <input type="text" placeholder="Enter An Operation Hour" name="hour" ng-model="store.contact.hour">
+
+      <label><b>Email</b></label>
+      <input type="text" placeholder="Enter An Email" name="email" ng-model="store.contact.email">
+
+      <label><b>Phone</b></label>
+      <input type="text" placeholder="Enter A Phone Number" name="phone" ng-model="store.contact.phone">
+
+      <label><b>Introduction</b></label>
+      <textarea placeholder="Enter An Introduction" name="introduction" ng-model="store.introduction"></textarea>
+      <br>
+      <br>
+      <button class="button secondary float-center" ng-click="addStore()">Confirm</button>
+    </div>
+</form>
+</div>
+<div class="large-2 show-for-large columns"><p></p></div>
+
+</div>

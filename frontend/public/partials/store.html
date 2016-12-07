@@ -1,0 +1,191 @@
+<!-- <nav data-sticky-container>
+  <div class="top-bar-toggle">
+  <span data-responsive-toggle="navbar" data-hide-for="medium">
+    <button class="menu-icon dark" type="button" data-toggle></button>
+  </span>
+</div>
+
+<div class="top-bar" id = "navbar" data-sticky data-options="marginTop:0" style="width:800%">
+  <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">VineCharcoal Travel Photo Studio</li>
+      <li><a href="#introduction">Photographer Introduction</a></li>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#services">Services and Fee</a></li>
+    </ul>
+</div>
+</nav> -->
+<div class ="row" id="menu">
+  <ul class="dropdown menu float-right" dropdown-menu ng-show="user">
+    <li>
+      <a href="#">{{ user.nickname }}</a>
+      <ul class="menu">
+        <!-- <li><a href="#">Your Favorites</a></li> -->
+        <li><a href="#/account">Your Account</a></li>
+        <li><a ng-click="logout()">Log out </a></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="dropdown menu float-right" dropdown-menu ng-hide="user">
+    <li>
+      <a href="#/login" ng-hide="user">Login</a>
+    </li>
+    <li>
+      <a href="#/register" ng-hide="user">Register</a>
+    </li>
+  </ul>
+</div>
+  <section class="row" id="title">
+    <div class="columns show-for-large large-2">
+      <img class = "icon float-right" src="./media/icon.jpg" width="100px" height="100px"  >
+    </div>
+    <div class="columns medium-12 large-10">
+      <a href="#/main"><h1 class = "header">Persephone Vintage</h1></a>
+    </div>
+
+
+  </section>
+
+
+  <section class="row" >
+    <div class="columns show-for-large large-4">
+      <p></p>
+    </div>
+		<div class="columns small-12 large-7" id = "story">
+      <h3 class = "header"> Our Story ... </h3>
+
+      <p>
+      {{store.introduction}}
+      <!-- Ashley Wang is a 22-year-old young photographer. She loves traveling around the world. In 2012, when she visited an old friend in New York, she found out people might need a professional photographer traveling with them to take pictures for them. She thought it might be a good idea to start a related business. Since she was still in college at that time, she decided to wait.
+
+      In 2016, she gruaduated with a Computer Science degree from University of Illinois. Even though she studies engineering, she is a big fan of fashion design and arts. After her gruadtion, she found a job as a part-time front-end engineer and started VineCharcoal Travel Photo Studio.
+
+      Though she is busy for most of the times, she loves reading and cooking when she is free. -->
+
+      </p>
+
+
+    </div>
+    <div class="columns show-for-large large-1">
+      <p></p>
+    </div>
+
+  </section>
+
+  <section class="row" >
+    <div class="columns show-for-large large-1">
+      <p></p>
+    </div>
+
+    <div class="columns small-12 large-5" id = "contact">
+      <h3 class = "header"> Contact Info ... </h3>
+
+      <p>
+
+      Address: "{{store.contact.address}}"
+      </p>
+      <p>
+      Hours: "{{store.contact.hour}}"
+      </p>
+      <p>
+      Email: "{{store.contact.email}}"
+      </p>
+      <p>
+      Phone: "{{store.contact.phone}}"
+      </p>
+    </div>
+
+    <div class="columns show-for-large large-6">
+      <p></p>
+    </div>
+
+
+  </section>
+
+
+  <section class="row" >
+
+    <div class="columns show-for-large large-4">
+     <p></p>
+    </div>
+
+    <div class="columns small-12 large-7" id = "new_arrivals">
+      <div class="row">
+        <h3 class = "header float-left align-center "> New Arrivals...</h3>
+        <a href="#/item_list/{{ store._id }}" >
+          <h5 class = "header float-right aligh-center">All items</h5>
+        </a>
+      </div>
+
+
+      <slick class = "float-center" settings="slickConfig">
+        <div>
+          <a href="#/item" >
+            <img src="./media/perse1.jpg" width="90%" >
+          </a>
+        </div>
+        <div>
+          <a href="#/item" >
+            <img src="./media/perse2.jpg" width="90%">
+          </a>
+        </div>
+        <div>
+          <a href="#/item" >
+            <img src="./media/perse3.jpg" width="90%">
+          </a>
+        </div>
+        <div>
+          <a href="#/item" >
+            <img src="./media/perse4.jpg" width="90%">
+          </a>
+        </div>
+      </slick>
+
+
+
+    </div>
+
+    <div class="columns show-for-large large-1">
+      <p></p>
+    </div>
+
+
+
+  </section>
+
+  <section class="row" >
+
+    <div class="columns show-for-large large-2 ">
+      <p></p>
+    </div>
+    <div class="columns small-12 large-6 " id = "review">
+      <h3 class = "header"> Reviews & Questions...</h3>
+      <p ng-repeat="review in reviews">{{ review.content }} - {{ review.user }}</p>
+      <label for="comment">Share yours:</label>
+      <input class = "comment" type="text" ng-model="comment">
+      <button ng-click="addComment()" class="button tiny info">Post</button>
+    </div>
+    <div class="columns show-for-large large-2 ">
+      <p></p>
+    </div>
+
+
+  </section>
+
+
+
+
+
+
+
+
+
+  <footer class="row text-center">
+    <span >
+      <i class="fi-social-facebook"></i>
+      <i class="fi-social-twitter"></i>
+      <i class="fi-social-pinterest"></i>
+      <i class="fi-social-tumblr"></i>
+      <i class="fi-social-instagram"></i>
+    </span>
+
+  </footer>

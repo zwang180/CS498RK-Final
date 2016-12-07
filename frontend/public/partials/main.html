@@ -1,0 +1,118 @@
+<div class ="row" id="menu">
+  <ul class="dropdown menu float-right" dropdown-menu ng-show="user">
+    <li>
+      <a href="#">{{ user.nickname }}</a>
+      <ul class="menu">
+        <!-- <li><a href="#">Your Favorites</a></li> -->
+        <li><a href="#/account">Your Account</a></li>
+        <li><a ng-click="logout()">Log out </a></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="dropdown menu float-right" dropdown-menu ng-hide="user">
+    <li>
+      <a href="#/login" ng-hide="user">Login</a>
+    </li>
+    <li>
+      <a href="#/register" ng-hide="user">Register</a>
+    </li>
+  </ul>
+</div>
+
+
+
+<section class="row" id="title">
+    <div class="columns show-for-large large-2">
+      <p></p>
+    </div>
+
+    <div class="columns medium-12 large-8 float-center">
+      <h2 class = "header text-center">Vintage Explorer</h1>
+    </div>
+
+    <div class="columns show-for-large large-2">
+      <p></p>
+    </div>
+
+
+</section>
+
+<section class="row" id="search">
+    <div class="columns show-for-large large-1">
+      <p></p>
+    </div>
+
+    <div class="columns small-12 large-10 float-center">
+
+
+
+
+      <div class="row" id="search">
+        <div class="columns show-for-large large-1">
+          <i class="fa fa-search fa-2x float-right" aria-hidden="true"></i>
+        </div>
+
+
+        <div class="columns small-12 large-7">
+          <input type="search" placeholder="Type in key words for store name, e.g. Fashion" ng-model="name">
+        </div>
+
+        <div class="columns show-for-large large-1">
+          <i class="fa fa-map-marker fa-2x float-right" aria-hidden="true"></i>
+        </div>
+
+
+        <div class="columns small-12 large-3">
+          <input class="float-left" type="search" placeholder="Type in city name." ng-model="city">
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <div class="columns show-for-large large-1">
+      <p></p>
+    </div>
+
+
+</section>
+
+
+<section class = "row" ng-repeat="store in stores | filter: {city: city, name: name}">
+    <div class="columns small-12 large-2 "> <p></p>
+    </div>
+
+    <div class="columns small-12 large-8">
+        <a href="#/store/{{ store._id }}">
+            <div class = "row" id = "front-page-rec">
+                <div class="columns show-for-large large-1 "> <p></p>
+                </div>
+
+                <div class="columns show-for-large large-3">
+                    <img class="float-center" src="./media/perse2.jpg" style="width:100px;height:100px;">
+                </div>
+
+                <div class="columns show-for-large large-2 "> <p></p>
+                </div>
+
+                <div class="columns small-12 large-6">
+                    <h4 class="store_title text-center">{{ store.name }}</h4>
+                </div>
+
+
+            </div>
+        </a>
+    </div>
+    <div class="columns small-12 large-2 "> <p></p>
+    </div>
+
+
+
+</section>
+
+
+<div class="columns small-12 large-12 text-center">
+    <a href="#/store_list">More ...
+    </a>
+</div>

@@ -1,0 +1,304 @@
+// Add any custom Sass & CSS here
+// Add any custom Sass & CSS here
+
+
+
+$font-color : rgb(20, 40, 40);
+$header-color: rgba(43,45,45, 0.9);
+$orange: rgba(226, 122, 47, 0.9);
+$teal: rgba(47, 83, 102, 0.9);
+
+body{
+    background-color: rgba(246, 247, 248, 0.1);
+}
+
+
+nav a {
+  color: #444;
+
+
+}
+
+.active {
+    color: rgb(20, 60, 60);
+    font-weight: bold;
+}
+
+.large{
+    font-size: 1em;
+}
+.small{
+    font-size: 0.8em;
+}
+
+.text-center {
+  padding: 20px;
+
+
+}
+
+ section {
+ position: relative;
+}
+
+
+.introduction {
+    padding-top: 30px;
+}
+
+
+p {
+    color: $font-color;
+    font-family:Book Antiqua;
+}
+
+
+
+slick {
+    @include breakpoint(large up){
+        margin-left: 60px;
+
+    };
+
+    @include breakpoint(medium only){
+        margin-left:45px;
+
+    };
+    @include breakpoint(small only){
+        margin-left: 20px;
+
+
+    };
+    padding: 10px;
+	width: 90%;
+}
+
+footer {
+    font-size: 50px;
+    color: $font-color;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.enlarge-modal {
+    color: $font-color;
+}
+.header {
+
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    color:$header-color;
+}
+h1 {
+    font-family: Papyrus, fantasy !important;
+    font-size: 90px !important;
+}
+
+h2 {
+    font-family: Papyrus, fantasy !important;
+    font-size: 80px !important;
+    color: rgba(226, 122, 47, 0.9) !important;
+    font-weight: 700 !important;
+
+}
+
+h3 {
+    font-size: 37px !important;
+    font-family: Optima !important;
+    color: $teal !important;
+
+}
+
+h4 {
+    font-size: 25px !important;
+    font-family: Optima !important;
+}
+
+h5 {
+    font-size: 20px !important;
+}
+.icon {
+    border-radius: 20px;
+}
+
+#contact {
+    background-color: rgba(180, 185, 185, 0.2);
+    background: linear-gradient(rgba(225, 237, 235,0.7),rgba(180, 185, 185, 0));
+
+
+}
+
+#story {
+    background-color: rgba(180, 185, 185, 0.3);
+    background: linear-gradient(rgba(225, 237, 235,0.7),rgba(180, 185, 185, 0));
+
+}
+
+
+
+#new_arrivals {
+	background-color: rgba(180, 185, 185, 0.3);
+	background: linear-gradient(rgba(225, 237, 235,0.7),rgba(180, 185, 185, 0));
+
+
+}
+#review {
+	background-color: rgba(180, 185, 185, 0.2);
+	background: linear-gradient(rgba(225, 237, 235,0.7),rgba(180, 185, 185, 0));
+
+}
+
+.row p {
+    color:rgba(51, 56, 54, 0.9);
+    font-family: Optima;
+    font-size: 18px;
+}
+
+td {
+    text-align: right;
+    border: none;
+    font-family: Optima;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+th {
+    text-align: right;
+    font-family: Optima;
+    font-variant: normal;
+    font-size:50px;
+    font-weight: 800;
+}
+
+table {
+    empty-cells: hide;
+    border-collapse: collapse;
+}
+
+
+
+.button {
+
+    background-color: rgba(180, 185, 185, 0.5);
+    color: rgba(43,45,45, 0.9);
+}
+
+div {
+    padding: 15px;
+}
+
+label {
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 200;
+    font-size: 20px;
+    font-family: Optima;
+    font-color: rgba(51, 56, 54, 0.9);
+}
+
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+
+
+
+
+#menu {
+    margin-bottom: 50px;
+    color:$header-color;
+    font-family: Optima;
+}
+
+#search {
+    margin-bottom: 50px;
+}
+
+#front-page-rec {
+    background: linear-gradient(to right,rgba(226, 122, 47, 0.25),rgba(226, 122, 47, 0.05));
+    margin-bottom: 20px;
+
+
+}
+
+.store_title {
+    @include vertical-center  ;
+    margin-top: - 30px;
+}
+
+
+.genre {
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 200;
+	font-size: 20px;
+	font-family: Optima;
+	color: $teal !important;
+
+}
+
+#item_list_header {
+	color: $teal !important;
+}
+
+/*.main_page{
+    background-color: rgba(199, 229, 228, 0.2);
+}*/
+
+
+
+.account_tab {
+    font-weight: bold;
+    font-family: Optima;
+    color: $teal !important;
+
+    a {
+        font-size: 20px !important;
+    }
+}
+
+.account_tab p {
+    font-style: normal;
+    font-variant: normal;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Optima;
+    color: $teal !important;
+}

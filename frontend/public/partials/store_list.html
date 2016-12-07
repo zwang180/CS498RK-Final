@@ -1,0 +1,128 @@
+<div class ="row" id="menu">
+  <ul class="dropdown menu float-right" dropdown-menu ng-show="user">
+    <li>
+      <a href="#">{{ user.nickname }}</a>
+      <ul class="menu">
+        <!-- <li><a href="#">Your Favorites</a></li> -->
+        <li><a href="#/account">Your Account</a></li>
+        <li><a ng-click="logout()">Log out </a></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="dropdown menu float-right" dropdown-menu ng-hide="user">
+    <li>
+      <a href="#/login" ng-hide="user">Login</a>
+    </li>
+    <li>
+      <a href="#/register" ng-hide="user">Register</a>
+    </li>
+  </ul>
+</div>
+<header class="w3-container w3-padding-32 w3-center w3-opacity w3-margin-bottom">
+  <div class="w3-clear"></div>
+  <a href="#/main"><h1><b>Vintage Explorer</b></h1></a>
+</header>
+
+
+
+
+
+
+
+<section class="row" id="search">
+    <div class="columns show-for-large large-1">
+      <p></p>
+    </div>
+
+    <div class="columns small-12 large-10 float-center">
+
+      <h3 class="header">Stores in {{city}}: </h3>
+
+          <div class="row" >
+                <div class="columns show-for-large large-1">
+                  <i class="fa fa-search fa-2x float-right" aria-hidden="true"></i>
+                </div>
+
+
+                <div class="columns small-12 large-6">
+                  <input type="search" placeholder="Type in key words for store name, e.g. Fashion" ng-model="name">
+                </div>
+
+                <div class="columns show-for-large large-1">
+                  <i class="fa fa-map-marker fa-2x float-right" aria-hidden="true"></i>
+                </div>
+
+
+                <div class="columns small-12 large-4">
+                  <input class="float-left" type="search" placeholder="City name." ng-model="city">
+                </div>
+
+
+          </div>
+
+        <div class = "sort">
+                    <legend>Sort by:     </legend>
+                    <input  type="radio"  value="dateCreated" name = "rankBy" ng-model="orderby"> <span>Date Started  </span>
+
+
+                    <input  type="radio" value="name" name = "rankBy" ng-model="orderby" > <span>Name  </span>
+
+                    <br>
+                    <input  type="radio"  ng-value="false" name = "rankorder" ng-model="orders"> <span>Ascending  </span>
+
+
+                    <input  type="radio" ng-value="true" name = "rankorder" ng-model="orders" > <span>Descending  </span>
+
+        </div>
+
+
+
+    </div>
+
+    <div class="columns show-for-large large-1">
+      <p></p>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+<section class = "row" ng-repeat="store in stores | filter:{name: name, city: city} | orderBy: orderby :orders ">
+    <div class="columns small-12 large-1 "> <p></p>
+    </div>
+
+    <div class="columns small-12 large-10 ">
+        <!-- <li ng-repeat="x in myData | filter:{title:keyword} | orderBy: selectOrder :order"> -->
+        <a href="#/store/{{ store._id }}">
+            <div class = "row" id = "front-page-rec">
+                <div class="columns show-for-large large-1 "> <p></p>
+                </div>
+
+                <div class="columns show-for-large large-3">
+                    <img class="float-center" src="./media/perse2.jpg" style="width:100px;height:100px;">
+                </div>
+
+                <div class="columns show-for-large large-2 "> <p></p>
+                </div>
+
+                <div class="columns small-12 large-6">
+                    <h4 class="store_title text-center"> {{store.name}}</h4>
+                </div>
+
+
+            </div>
+        </a>
+
+
+        <!-- </li> -->
+
+    </div>
+
+    <div class="columns small-12 large-1 "> <p></p>
+    </div>
+</section>

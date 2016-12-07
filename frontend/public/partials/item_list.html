@@ -1,0 +1,71 @@
+<div class ="row" id="menu">
+  <ul class="dropdown menu float-right" dropdown-menu ng-show="user">
+    <li>
+      <a href="#">{{ user.nickname }}</a>
+      <ul class="menu">
+        <!-- <li><a href="#">Your Favorites</a></li> -->
+        <li><a href="#/account">Your Account</a></li>
+        <li><a ng-click="logout()">Log out </a></li>
+      </ul>
+    </li>
+  </ul>
+  <ul class="dropdown menu float-right" dropdown-menu ng-hide="user">
+    <li>
+      <a href="#/login" ng-hide="user">Login</a>
+    </li>
+    <li>
+      <a href="#/register" ng-hide="user">Register</a>
+    </li>
+  </ul>
+</div>
+<header class="w3-container w3-padding-32 w3-center w3-opacity w3-margin-bottom">
+  <div class="w3-clear"></div>
+  <a href="#/main"><h1><b>Vintage Explorer</b></h1></a>
+</header>
+  <div class='row'>
+    <div class="show-for-large large-2 columns ">
+      <h3> </h3>
+    </div>
+
+    <div class="small-12 large-8 columns ">
+      <h3 class="header"> Items from {{store.name}} </h3>
+    </div>
+
+    <div class="small-12 large-2 columns">
+      <a href="#/add_item">
+             <h5 class="header" ng-show="user._id === store.owner" >Upload More</h5>
+      </a>
+  </div>
+
+  </div>
+
+<div class="row">
+  <div class="small-12 large-2 columns ">
+    <input type="checkbox" ng-true-value="'Top'" ng-false-value="''" ng-model="type"><span class='genre'> Top</span><br></input>
+    <input type="checkbox" ng-true-value="'Bottom'" ng-false-value="''" ng-model="type"><span class='genre'> Bottom</span><br>  </input>
+    <input type="checkbox" ng-true-value="'Coat'" ng-false-value="''" ng-model="type"><span class='genre'> Coat</span><br></input>
+    <input type="checkbox" ng-true-value="'Shoes'" ng-false-value="''" ng-model="type"><span class='genre'> Shoes</span><br></input>
+    <input type="checkbox" ng-true-value="'Accessories'" ng-false-value="''" ng-model="type"><span class='genre'> Accessories</span><br></input>
+  </div>
+
+  <div class="small-12 large-10 columns">
+
+    <div class="row small-up-1 medium-up-2 large-up-4">
+      <!-- <div class="column" ng-repeat="x in myData filter:{genre:Genre} " > -->
+      <!-- </div> -->
+      <div class="column" ng-repeat="item in items | filter: { type: type }" id="item-{{ item._id }}">
+       <a href="#/item/{{ item._id }}">
+        <img ng-src="./media/perse1.jpg" class="thumbnail">
+        <p>{{ item.name }}</p>
+        <button ng-show="user._id == store.owner" ng-click="delete(item._id)">Delete</button>
+       </a>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+</div>
