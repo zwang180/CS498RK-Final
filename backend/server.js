@@ -12,8 +12,8 @@ var passport = require('passport');
 var app = express();
 
 // Use environment defined port or 3000
-var port = process.env.PORT || 5000;
-
+// var port = process.env.PORT || 5000;
+var port = 8080;
 //Allow CORS so that backend and frontend could pe put on different servers
 var allowCrossDomain = function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
